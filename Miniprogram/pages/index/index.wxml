@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class="container">
+  <web-view id="aaa" src="{{testHome}}" bindmessage="handleMessage"></web-view>
+</view>

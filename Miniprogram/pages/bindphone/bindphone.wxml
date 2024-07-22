@@ -1,0 +1,27 @@
+<!--pages/bindphone/bindphone.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+    <block>
+    <view>{{phonenumber}}</view>
+    </block>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号授权</button>
+    <button bindtap="test">test
+    </button>
+      {{cookieData}}
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+
+</view>
+
