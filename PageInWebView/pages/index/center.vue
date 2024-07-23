@@ -20,26 +20,27 @@ import { useAttrs } from "vue";
 			return {
 				title: 'Hello',
 				headimg:'',
-				number:'12wqwqwe12eqweq'
+				number:'12wqwqwe12eqweq',
 			}
 		},
 		onLoad(options) {
 			var phoneNumber=this.$route.query.number
-			if(document.cookie==null){
-				var name="phone",value=phoneNumber;
+			 console.log(phoneNumber)
+				var name="phone",value=phoneNumber,days=7;
 				var expires = "";
-				var date = new Date();
-				date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
-				expires = "; expires=" + date.toUTCString();
-				document.cookie = name + "=" + (value || "") + expires + "; path=/" + this.getDomain();
-				console.log("cookie")
-			}
+				    if (days) {
+				        var date = new Date();
+				        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+				        expires = "; expires=" + date.toUTCString();
+				    }
+				    document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=" + window.location.hostname;
+				
 			if(document.cookie!=null){
 				var phoneNumber=document.cookie.phone;
-				window.postMessage({
-				  type: 'phone',
-				  phone: phoneNumber
-				}, '*');
+				// window.postMessage({
+				//   type: 'phone',
+				//   phone: phoneNumber
+				// }, '*');
 				var cookieArray = document.cookie.split(';'); // 将所有 cookie 分割成单独的名称-值对
 				var cookie,cookieValue;
 				console.log('cookieArray:', cookieArray);
@@ -140,8 +141,10 @@ import { useAttrs } from "vue";
 				// 使用示例：设置一个名为 'testCookie'，值为 '123456'，有效期为 7 天的 cookie
 			},
 			sendPhoneNumber() {
-			  wx.miniProgram.postMessage({
-				  data: { phone:this.number}
+				console.log(document.cookie)
+				var Postdata={ phone:this.number}
+				wx.miniProgram.postMessage({
+				  data: Postdata
 				
 			  })
 			 wx.miniProgram.redirectTo({

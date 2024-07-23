@@ -23,7 +23,7 @@ Page({
     canIUseOpenData:false,
     phonenumber:'',
     temp:'',
-    testHome:'http://127.0.0.1:8080/#/pages/index/center',
+    testHome:'http://127.0.0.1:8080/#/pages/index/center?number=123ee',
     basehome:'127.0.0.1',
     lastpage:'http://127.0.0.1:8080/#/pages/index/center',
     show:true
