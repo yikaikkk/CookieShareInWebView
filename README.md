@@ -11,8 +11,8 @@
 * We found that in WeChat, although there is an independent sandbox for each mini program and the internal data storage is independent of each other, this is not the case in the web view component. We found that cookies in web view are saved in a shared file, which is the Cookies.binarycookies file located in the '/Library/Cookies/' path in the WeChat directory. Cookies in different web view components of different mini programs are also saved in this file, resulting in a shared situation
 
 ## POC
-* We designed the following experiment to demonstrate how cookies can be passed between pages within a mini program and in a web view
-We choose to use URL concatenation to pass data into the web view, and then save this data as a cookie. Using the functions provided by the web view component, we can pass the data from the web view to the mini program
+* We designed the following experiment to demonstrate how cookies can be passed between pages within a mini-program and in a web-view
+We choose to use URL concatenation to pass data into the web-view, and then save this data as a cookie. Using the functions provided by the web view component, we can pass the data from the web view to the mini program
     * The URL spliced together
 ![alt text](static/src.png)
     * Cookies saved in web-view
@@ -26,7 +26,7 @@ As analyzed above, cookies are not completely isolated between mini programs. Mi
 * We have found a case of cookie sharing in the mini program ecosystem, as shown in the following figure
 When we authorized login in the JD shopping mini program and entered the web view page of the current mini program while capturing packets, we found that there were jdpin and other cookie fields representing the username in the cookie
   ![alt text](static/image.png)
-  
+
 * However, when we enter the JD Home mini program and enter a certain web view page without logging in, we can find through packet capture that even without logging in, the mini program can still bypass the authorization process in the super app by using cookies in the web view component to obtain the user's username and other information from other mini programs
   ![alt text](static/image_1.png)
 
