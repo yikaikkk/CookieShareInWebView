@@ -8,7 +8,7 @@
 ![](static/DataFlow.jpg) 
 
 ## Analysis
-* We found that in WeChat, although there is an independent sandbox for each mini-program and the internal data storage is independent of each other, this is not the case in the web-view component. We found that cookies in web-view are saved in a shared file, which is the Cookies.binarycookies file located in the '/Library/Cookies/' path in the WeChat directory. Cookies in different web-view components of different mini-programs are also saved in this file, resulting in a shared situation
+* We found that in WeChat, although there is an independent sandbox for each mini-program and the internal data storage is independent of each other, this is not the case in the web-view component. We found that cookies in web-view are saved in a shared file, which is the Cookies.binarycookies file located in the '/Library/Cookies/' path in the WeChat directory(In the iOS system). Cookies in different web-view components of different mini-programs are also saved in this file, resulting in a shared situation
 
 ## POC
 * We designed the following experiment to demonstrate how cookies can be passed between pages within a mini-program and in a web-view
